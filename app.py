@@ -35,8 +35,14 @@ def add_cliente(form: ClienteSchema):
     cliente = Cliente(
         id=None,
         nome=form.nome,
-        email=form.email,
-        tel=form.tel)
+        cep=form.cep,
+        tel=form.tel,
+        endereco=form.endereco,
+        numero=form.numero,
+        bairro=form.bairro,
+        cidade=form.cidade,
+        estado=form.estado)
+    
     logger.debug(f"Adicionando cliente de nome: '{cliente.nome}'")
     try:
         # criando conexão com a base
@@ -71,8 +77,14 @@ def update_cliente(form: ClienteSchema):
     cliente = Cliente(
         id=form.id,
         nome=form.nome,
-        email=form.email,
-        tel=form.tel)
+        cep=form.cep,
+        tel=form.tel,
+        endereco=form.endereco,
+        numero=form.numero,
+        bairro=form.bairro,
+        cidade=form.cidade,
+        estado=form.estado)
+    
     logger.debug(f"Adicionando cliente de nome: '{cliente.nome}'")
     try:
         # criando conexão com a base
@@ -83,8 +95,13 @@ def update_cliente(form: ClienteSchema):
         cliente_upd = session.query(Cliente).filter(Cliente.id == cliente.id).first()
 
         cliente_upd.nome = cliente.nome
-        cliente_upd.email = cliente.email
+        cliente_upd.cep = cliente.cep
         cliente_upd.tel = cliente.tel
+        cliente_upd.endereco = cliente.endereco
+        cliente_upd.numero = cliente.numero
+        cliente_upd.bairro = cliente.bairro
+        cliente_upd.cidade = cliente.cidade
+        cliente_upd.estado = cliente.estado
 
         # efetivando o camando de adição de novo item na tabela
         session.commit()

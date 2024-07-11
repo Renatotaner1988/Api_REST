@@ -7,8 +7,15 @@ class ClienteSchema(BaseModel):
     """
     id: int = 1
     nome: str = "Renato Lisboa da Silva"
-    email: str = "renato@email.com.br"
-    tel: str = 995978514
+    cep: int= 25010390
+    tel: int = 995978514
+    endereco: str = "Rua José Lages de Barros"
+    numero: int = 50
+    bairro: str = "Vila Ideal"
+    cidade: str = "Duque de Caxias"
+    estado: str = "RJ"
+
+
 
 
 class ClienteBuscaSchema(BaseModel):
@@ -34,20 +41,30 @@ def apresenta_clientes(clientes: List[Cliente]):
         result.append({
             "id": cliente.id,
             "nome": cliente.nome,
-            "email": cliente.email,
+            "cep": cliente.cep,
             "tel": cliente.tel,
+            "endereco": cliente.endereco,
+            "numero": cliente.numero,
+            "bairro": cliente.bairro,
+            "cidade": cliente.cidade,
+            "estado": cliente.estado,
         })
 
     return {"clientes": result}
 
 
 class ClienteViewSchema(BaseModel):
-    """ Define como um cliente será retornado: cliente + comentários.
+    """ Define como um cliente será retornado: cliente
     """
     id: int = 1
     nome: str = "Renato Lisboa"
-    email: str = "renato@mail.com"
-    tel: str = "12345678"
+    cep: int = 25010390
+    tel: int = 995849316
+    endereco: str = "Rua José Lages de Barros"
+    numero: int = 50
+    bairro: str = "Vila Ideal"
+    cidade: str = "Duque de Caxias"
+    estado: str = "RJ"
 
 
 class ClienteDelSchema(BaseModel):
@@ -64,6 +81,12 @@ def apresenta_cliente(cliente: Cliente):
     return {
         "id": cliente.id,
         "nome": cliente.nome,
-        "email": cliente.email,
-        "tel": cliente.tel
+        "cep": cliente.cep,
+        "tel": cliente.tel,
+        "endereco": cliente.endereco,
+        "numero": cliente.numero,
+        "bairro": cliente.bairro,
+        "cidade": cliente.cidade,
+        "estado": cliente.estado,
+        
     }
